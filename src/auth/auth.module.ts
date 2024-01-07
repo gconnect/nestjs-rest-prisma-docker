@@ -6,11 +6,13 @@ import { JwtModule } from '@nestjs/jwt';
 import { PrismaModule } from 'src/prisma/prisma.module';
 import { JwtStrategy } from './jwt.strategy';
 import { UsersModule } from 'src/users/users.module';
+import { ConfigModule } from '@nestjs/config';
 
 export const jwtSecret = process.env.JWT_SECRET;
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     PrismaModule,
     PassportModule,
     JwtModule.register({
